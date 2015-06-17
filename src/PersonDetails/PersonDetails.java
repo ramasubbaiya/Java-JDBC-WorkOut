@@ -25,5 +25,5 @@ public interface PersonDetails {
     
     void delete(int id);
     
-    void update(int id);
+    void update(Person person,int id);
 }

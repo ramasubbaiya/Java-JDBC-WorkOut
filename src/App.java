@@ -1,6 +1,9 @@
 
 import Connection.connectionConf;
+import Person.Person;
 import java.sql.Connection;
+import java.util.List;
+import personQuery.personQuery;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,24 +17,33 @@ import java.sql.Connection;
 public class App {
     
     public static void main(String[] args) {
-        Connection connection = null;
+
         
-        try {
-            connection = connectionConf.getConnection();
-            if (connection != null) {
-                System.out.println("Connected Successfully");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                
-            }
-        }
+       personQuery pq = new personQuery();
+       //Create a table
+//       pq.createPersonTable();
+
+        //Insert a new record
+//        Person person = new Person("ram","Adaikkalam");
+//        pq.insert(person);
+      
+       
+        //Select by id
+        //Person person = pq.selectById(3);
+        //System.out.println(person.getId()+"\t"+person.getFirstName()+"\t"+person.getLastName());
+        
+       
+       //Select All
+        List<Person> persons = pq.selectAll();
+        for(Person person:persons){
+            System.out.println(person.getId()+", "+person.getFirstName()+", "+person.getLastName()+"");
+       }
+        
+        //To delete
+//       pq.delete(1);
+        
+        //to Update
+//       Person person = new Person("Antony","nimya");
+//       pq.update(person, 2);
     }
 }
